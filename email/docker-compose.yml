@@ -1,0 +1,16 @@
+version: "2"
+services:
+  addressbook_client:
+    build: client/.
+    depends_on:
+    - addressbook_server
+  addressbook_server:
+    build: server/.
+    ports:
+    - "50056:50056"
+    depends_on:
+    - addressbook_mongodb
+  addressbook_mongodb:
+    image: mongo
+    ports:
+    - "27017:27017"

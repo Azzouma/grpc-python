@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package search_insert;                   //optional field
+
+// The greeting service definition.
+service address_info {
+  // Sends a greeting
+  rpc search_user (user_email) returns (user_info) {};
+  rpc insert_user (user_info) returns (user_info) {}
+}
+
+// Client part
+// The request message containing the user's name.
+message user_email {
+  string email = 1;
+}
+
+// Server part
+// The response message containing the user info
+message user_info {
+  int32 id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string email = 4;
+}
+
+/*
+python -m grpc_tools.protoc --proto_path=. ./addressbook.proto --python_out=. --grpc_python_out=.
+*/
